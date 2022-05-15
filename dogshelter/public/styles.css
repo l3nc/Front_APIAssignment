@@ -1,5 +1,17 @@
-.heading {
+.title-top {
   font-size: 50px;
   font-weight: bold;
   border-bottom: 5px solid black;
+  color: blue;
+  width: fit-content;
+  height: fit-content;
+  text-align: center;
+  margin: auto;
+}
+
+.category-item {
+  list-style-type: none;
+  text-align: center;
+  text-transform: capitalize;
+  color: saddlebrown;
 }
