@@ -25,22 +25,6 @@ const passwordRules = [
   { required: true, message: 'Please input your password!' },
 ];
 
-const confirmRules = [
-  { required: true, message: 'Please confirm your password!' },
-  ({ getFieldValue }) => ({
-    validator(rule, value) {
-      if (!value || getFieldValue('password') === value) {
-        return Promise.resolve();
-      }
-      return Promise.reject('The passwords that you entered do not match!');
-    },
-  }),
-];
-
-const usernameRules = [
-  { required: true, message: 'Please input your username!', whitespace: true },
-];
-
 const formItemLayout = {
   labelCol: { xs: { span: 24 }, sm: { span: 6 } },
   wrapperCol: { xs: { span: 24 }, sm: { span: 12 } },
@@ -49,10 +33,10 @@ const tailFormItemLayout = {
   wrapperCol: { xs: { span: 24, offset: 0 }, sm: { span: 16, offset: 6 } },
 };
 
-function RegistrationForm() {
+function LoginForm() {
   return (
     <Form
-      name='register'
+      name='Login'
       {...formItemLayout}
       scrollToFirstError
       onFinish={onFinish}
@@ -70,26 +54,13 @@ function RegistrationForm() {
         <Input.Password />
       </Form.Item>
 
-      <Form.Item
-        name='confirm'
-        label='Confirm Password'
-        rules={confirmRules}
-        hasFeedback
-      >
-        <Input.Password />
-      </Form.Item>
-
-      <Form.Item name='username' label='Username' rules={usernameRules}>
-        <Input />
-      </Form.Item>
-
       <Form.Item {...tailFormItemLayout}>
         <Button type='primary' htmlType='submit'>
-          Register
+          Login
         </Button>
       </Form.Item>
     </Form>
   );
 }
 
-export default RegistrationForm;
+export default LoginForm;

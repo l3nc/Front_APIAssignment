@@ -4,22 +4,26 @@ import { Layout, Menu, Breadcrumb, Button } from 'antd';
 import Frame from './components/frame';
 import RegistrationForm from './../src/data/register';
 import About from './../src/data/about';
+import LoginForm from './../src/data/login';
+
 import {
-  DesktopOutlined,
-  PieChartOutlined,
-  FileOutlined,
+  FileAddOutlined,
+  UserSwitchOutlined,
+  NotificationOutlined,
   TeamOutlined,
+  FileOutlined,
+  PieChartOutlined,
   UserOutlined,
-  EditTwoTone,
 } from '@ant-design/icons';
+import Login from './../src/data/login';
 const { Header, Content, Footer, Sider } = Layout;
 
 function getItem(label, key, icon, children) {
   return {
+    label,
     key,
     icon,
     children,
-    label,
   };
 }
 
@@ -28,15 +32,25 @@ const items = [
     'Sign Up',
     '1',
     <Link to='/register'>
-      <EditTwoTone />
+      <FileAddOutlined />
     </Link>
   ),
-  getItem('Charity Login', '2', <DesktopOutlined />),
-  getItem('About', <Link to='/about'></Link>),
-  getItem('Dog Adoption', 'sub2', <TeamOutlined />, [
-    getItem('All Dogs', '6'),
-    getItem('Team 2', '8'),
-  ]),
+
+  getItem(
+    'Charity Login',
+    '2',
+    <Link to='/login'>
+      <UserSwitchOutlined />
+    </Link>
+  ),
+  getItem(
+    'About',
+    '3',
+    <Link to='/about'>
+      <NotificationOutlined />
+    </Link>
+  ),
+  getItem('Dog Adoption', '4', <TeamOutlined />),
   getItem('Files', '9', <FileOutlined />),
 ];
 
@@ -85,9 +99,7 @@ export default class SiderDemo extends React.Component {
                 style={{
                   margin: '16px 0',
                 }}
-              >
-                <Breadcrumb.Item>Sign Up</Breadcrumb.Item>
-              </Breadcrumb>
+              ></Breadcrumb>
               <div
                 className='site-layout-background'
                 style={{
@@ -97,6 +109,7 @@ export default class SiderDemo extends React.Component {
               >
                 <Routes>
                   <Route path='/register' element={<RegistrationForm />} />
+                  <Route path='/login' element={<LoginForm />} />
                   <Route path='/about' element={<About />} />
                 </Routes>
               </div>
