@@ -24,7 +24,13 @@ function getItem(label, key, icon, children) {
 }
 
 const items = [
-  getItem('Sign Up', '1', <Link to='/register'> </Link>, <EditTwoTone />),
+  getItem(
+    'Sign Up',
+    '1',
+    <Link to='/register'>
+      <EditTwoTone />
+    </Link>
+  ),
   getItem('Charity Login', '2', <DesktopOutlined />),
   getItem('About', <Link to='/about'></Link>),
   getItem('Dog Adoption', 'sub2', <TeamOutlined />, [
