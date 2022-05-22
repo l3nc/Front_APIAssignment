@@ -1,13 +1,13 @@
 import React from 'react';
-import { createRoot, ReactDOM } from 'react-dom/client';
-import Frame from './components/Frame';
-import registerForm from './Form/registerForm';
+import { createRoot, ReactDOM, Route } from 'react-dom/client';
+import Frame from './components/frame';
+import RegistrationForm from './form/registrationform';
 
 export default function App() {
   return (
     <div>
       <Frame />
-      <registerForm />
+      <Route path='/register' element={<RegistrationForm />} />
     </div>
   );
 }

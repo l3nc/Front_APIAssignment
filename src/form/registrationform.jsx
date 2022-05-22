@@ -1,6 +1,7 @@
 import { Button, Checkbox, Form, Input } from 'antd';
+import React from 'react';
 
-const registerForm = () => {
+const registrationForm = () => {
   const onFinish = (values) => {
     console.log('Success:', values);
   };
@@ -39,12 +40,37 @@ const registerForm = () => {
       </Form.Item>
 
       <Form.Item
+        label='Email'
+        name='email'
+        rules={[
+          {
+            required: true,
+            message: 'Please input your email!',
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+
+      <Form.Item
         label='Password'
         name='password'
         rules={[
           {
             required: true,
             message: 'Please input your password!',
+          },
+        ]}
+      >
+        <Input.Password />
+      </Form.Item>
+      <Form.Item
+        label='Confirm Password'
+        name='Confirm password'
+        rules={[
+          {
+            required: true,
+            message: 'Please confirm your password!',
           },
         ]}
       >
@@ -69,11 +95,11 @@ const registerForm = () => {
         }}
       >
         <Button type='primary' htmlType='submit'>
-          Submit
+          register
         </Button>
       </Form.Item>
     </Form>
   );
 };
 
-export default registerForm;
+export default registrationForm;

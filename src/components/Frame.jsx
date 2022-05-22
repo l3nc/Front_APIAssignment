@@ -22,7 +22,7 @@ function getItem(label, key, icon, children) {
 }
 
 const items = [
-  getItem('Sing Up', '1', <PieChartOutlined />),
+  getItem('Sign Up', '1', <PieChartOutlined />),
   getItem('Charity Login', '2', <DesktopOutlined />),
   getItem('About', 'sub1', <UserOutlined />, [
     getItem('Purpose', '3'),
