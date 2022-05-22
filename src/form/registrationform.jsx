@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 import { Form, Input, Button } from 'antd';
-import http from '../common/http-common';
 import { LoadingOutlined } from '@ant-design/icons';
 
-function onFinish(values) {
-  //console.log("Success", values)
+// function onFinish(values) {
+//   //console.log("Success", values)
 
-  const { confirm, ...data } = values;
-  http
-    .post('/signup', data)
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-}
+//   const { confirm, ...data } = values;
+//   http
+//     .post('/signup', data)
+//     .then((response) => {
+//       console.log(response.data);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// }
 
 const emailRules = [
   { type: 'email', message: 'The input is not valid E-mail!' },
@@ -56,7 +55,7 @@ function RegistrationForm() {
       name='register'
       {...formItemLayout}
       scrollToFirstError
-      onFinish={onFinish}
+      onFinish={'onFinish'}
     >
       <Form.Item name='email' label='E-mail' rules={emailRules}>
         <Input />

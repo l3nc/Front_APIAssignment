@@ -1,20 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Input, Button } from 'antd';
-import http from '../common/http-common';
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
-
-// function onFinish(values) {
-//   const { confirm, ...data } = values;
-//   http
-//     .post('/users', data)
-//     .then((response) => {
-//       console.log(response.data);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// }
 
 const emailRules = [
   { type: 'email', message: 'The input is not valid E-mail!' },
@@ -42,12 +29,13 @@ function LoginForm() {
   const login = (e) => {
     if (email !== '' && password !== '') {
       axios
-        .post('http://localhost:3001/login', {
+        .post('http://127.0.0.1:3001/api/v1/cws/login', {
           email: email,
           password: password,
         })
         .then((res) => {
           alert('Login Success');
+          console.log('LOGIN');
           navigate('/about');
         })
         .catch((e) => {
@@ -60,7 +48,7 @@ function LoginForm() {
   return (
     <Form name='Login' {...formItemLayout} scrollToFirstError onFinish={login}>
       <Form.Item name='email' label='E-mail' rules={emailRules}>
-        <Input />
+        <Input name='email' value={setEmail} />
       </Form.Item>
 
       <Form.Item
@@ -69,7 +57,7 @@ function LoginForm() {
         rules={passwordRules}
         hasFeedback
       >
-        <Input.Password />
+        <Input.Password name='password' value={setPassword} />
       </Form.Item>
 
       <Form.Item {...tailFormItemLayout}>
