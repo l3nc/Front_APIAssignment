@@ -3,12 +3,14 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Layout, Menu, Breadcrumb, Button } from 'antd';
 import Frame from './components/frame';
 import RegistrationForm from './../src/data/register';
+import About from './../src/data/about';
 import {
   DesktopOutlined,
   PieChartOutlined,
   FileOutlined,
   TeamOutlined,
   UserOutlined,
+  EditTwoTone,
 } from '@ant-design/icons';
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -22,13 +24,9 @@ function getItem(label, key, icon, children) {
 }
 
 const items = [
-  getItem('Sign Up', <Link to='/register'></Link>),
+  getItem('Sign Up', '1', <Link to='/register'> </Link>, <EditTwoTone />),
   getItem('Charity Login', '2', <DesktopOutlined />),
-  getItem('About', 'sub1', <UserOutlined />, [
-    getItem('Purpose', '3'),
-    getItem('Bill', '4'),
-    getItem('Alex', '5'),
-  ]),
+  getItem('About', <Link to='/about'></Link>),
   getItem('Dog Adoption', 'sub2', <TeamOutlined />, [
     getItem('All Dogs', '6'),
     getItem('Team 2', '8'),
@@ -93,6 +91,7 @@ export default class SiderDemo extends React.Component {
               >
                 <Routes>
                   <Route path='/register' element={<RegistrationForm />} />
+                  <Route path='/about' element={<About />} />
                 </Routes>
               </div>
             </Content>
@@ -101,7 +100,7 @@ export default class SiderDemo extends React.Component {
                 textAlign: 'center',
               }}
             >
-              Ant Design ©2018 Created by Ant UED
+              Create by Nelson Chung
             </Footer>
           </Layout>
         </Layout>
