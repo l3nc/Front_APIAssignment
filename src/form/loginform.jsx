@@ -23,16 +23,22 @@ const tailFormItemLayout = {
 function LoginForm() {
   const navigate = Navigate;
   //console.log("Success", values)
-  const [email, setEmail] = useState(' ');
-  const [password, setPassword] = useState(' ');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  function onChangeHandler(event) {
-    setEmail(event.target.value);
-    setPassword(event.target.value);
+  function handleEmail(e) {
+    setEmail(e.target.value);
   }
-
+  function handlePassword(e) {
+    setPassword(e.target.value);
+  }
+  const onSubmit = (e) => {
+    e.preventDefault();
+  };
   const login = (e) => {
     if (email !== '' && password !== '') {
+      console.log(email);
+      console.log(password);
       axios
         .post('http://127.0.0.1:3001/api/v1/cws/login', {
           email: email,
@@ -41,7 +47,6 @@ function LoginForm() {
 
         .then((res) => {
           alert('Login Success');
-
           navigate('/about');
         })
         .catch((e) => {
@@ -49,35 +54,46 @@ function LoginForm() {
             alert('email or password incorrect!');
           }
         });
+    } else if (email === '') {
+      console.log(email);
+      console.log(password);
+      alert('Please input email!');
+    } else {
+      console.log(email);
+      console.log(password);
+      alert('Please input password!');
     }
   };
   return (
-    <Form name='Login' {...formItemLayout} scrollToFirstError onFinish={login}>
-      <Form.Item name='email' label='E-mail' rules={emailRules}>
-        <Input
-          name='email'
-          type='text'
-          onchange={onChangeHandler}
-          value={email}
-        />
+    <Form
+      name='Login'
+      {...formItemLayout}
+      scrollToFirstError
+      onSubmit={onSubmit}
+    >
+      <Form.Item
+        name='email'
+        label='E-mail'
+        rules={emailRules}
+        onChange={handleEmail}
+        value={email}
+      >
+        <Input />
       </Form.Item>
 
       <Form.Item
         name='password'
         label='Password'
         rules={passwordRules}
+        onChange={handlePassword}
+        value={password}
         hasFeedback
       >
-        <Input.Password
-          name='password'
-          type='text'
-          onchange={onChangeHandler}
-          value={password}
-        />
+        <Input.Password />
       </Form.Item>
 
       <Form.Item {...tailFormItemLayout}>
-        <Button type='primary' htmlType='submit'>
+        <Button type='primary' htmlType='submit' onClick={login}>
           Login
         </Button>
       </Form.Item>
