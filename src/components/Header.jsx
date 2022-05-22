@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageHeader } from 'antd';
+import 'antd/dist/antd.css';
 
 function Header() {
   <PageHeader
