@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Form, Input, Button } from 'antd';
 import http from '../common/http-common';
+import { LoadingOutlined } from '@ant-design/icons';
 
 function onFinish(values) {
   //console.log("Success", values)
 
   const { confirm, ...data } = values;
   http
-    .post('/users', data)
+    .post('/signup', data)
     .then((response) => {
       console.log(response.data);
     })

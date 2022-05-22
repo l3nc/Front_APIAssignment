@@ -1,8 +1,13 @@
-import axios from 'axios';
+// import axios from 'axios';
 
-export default axios.create({
-  baseURL: '127.0.0.1:6000/api/v1/cws',
-  headers: {
-    'Content-type': 'application/json',
-  },
-});
+// axios.defaults.headers.post['Content-Type'] = 'application/json';
+
+// const cwAxios = axios.create({
+//   baseURL: 'localhost:6000//api/v1/cws',
+// });
+
+// const dogAxios = axios.create({
+//   baseURL: 'localhost:6000//api/v1/dogs',
+// });
+
+// export { cwAxios, dogAxios };
