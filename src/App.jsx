@@ -11,9 +11,8 @@ import {
   UserSwitchOutlined,
   NotificationOutlined,
   TeamOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  UserOutlined,
+  HomeOutlined,
+  ArrowLeftOutlined,
 } from '@ant-design/icons';
 import Login from './../src/data/login';
 const { Header, Content, Footer, Sider } = Layout;
@@ -51,7 +50,7 @@ const items = [
     </Link>
   ),
   getItem('Dog Adoption', '4', <TeamOutlined />),
-  getItem('Files', '9', <FileOutlined />),
+  getItem('Home', '5', <HomeOutlined />),
 ];
 
 export default class SiderDemo extends React.Component {
