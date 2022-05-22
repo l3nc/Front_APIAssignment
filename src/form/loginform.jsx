@@ -26,6 +26,11 @@ function LoginForm() {
   const [email, setEmail] = useState(' ');
   const [password, setPassword] = useState(' ');
 
+  function onChangeHandler(event) {
+    setEmail(event.target.value);
+    setPassword(event.target.value);
+  }
+
   const login = (e) => {
     if (email !== '' && password !== '') {
       axios
@@ -33,9 +38,10 @@ function LoginForm() {
           email: email,
           password: password,
         })
+
         .then((res) => {
           alert('Login Success');
-          console.log('LOGIN');
+
           navigate('/about');
         })
         .catch((e) => {
@@ -48,7 +54,12 @@ function LoginForm() {
   return (
     <Form name='Login' {...formItemLayout} scrollToFirstError onFinish={login}>
       <Form.Item name='email' label='E-mail' rules={emailRules}>
-        <Input name='email' value={setEmail} />
+        <Input
+          name='email'
+          type='text'
+          onchange={onChangeHandler}
+          value={email}
+        />
       </Form.Item>
 
       <Form.Item
@@ -57,7 +68,12 @@ function LoginForm() {
         rules={passwordRules}
         hasFeedback
       >
-        <Input.Password name='password' value={setPassword} />
+        <Input.Password
+          name='password'
+          type='text'
+          onchange={onChangeHandler}
+          value={password}
+        />
       </Form.Item>
 
       <Form.Item {...tailFormItemLayout}>
