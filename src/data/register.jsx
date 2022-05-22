@@ -1,5 +1,5 @@
 import React from 'react';
-import RegistrationForm from '../form/registrationform';
+import RegistrationForm from './../form/registrationform';
 
 function status(response) {
   if (response.status >= 200 && response.status < 300) {

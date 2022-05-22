@@ -1,16 +1,113 @@
 import React from 'react';
-import { createRoot, ReactDOM } from 'react-dom/client';
-import { Route, Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { Layout, Menu, Breadcrumb, Button } from 'antd';
 import Frame from './components/frame';
 import RegistrationForm from './../src/data/register';
+import {
+  DesktopOutlined,
+  PieChartOutlined,
+  FileOutlined,
+  TeamOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
+const { Header, Content, Footer, Sider } = Layout;
 
-export default function App() {
-  return (
-    <div>
-      <Frame />
-      <Router>
-        <Route path='/register' element={<RegistrationForm />} />
-      </Router>
-    </div>
-  );
+function getItem(label, key, icon, children) {
+  return {
+    key,
+    icon,
+    children,
+    label,
+  };
 }
+
+const items = [
+  getItem('Sign Up', <Link to='/register'></Link>),
+  getItem('Charity Login', '2', <DesktopOutlined />),
+  getItem('About', 'sub1', <UserOutlined />, [
+    getItem('Purpose', '3'),
+    getItem('Bill', '4'),
+    getItem('Alex', '5'),
+  ]),
+  getItem('Dog Adoption', 'sub2', <TeamOutlined />, [
+    getItem('All Dogs', '6'),
+    getItem('Team 2', '8'),
+  ]),
+  getItem('Files', '9', <FileOutlined />),
+];
+
+export default class SiderDemo extends React.Component {
+  state = {
+    collapsed: false,
+  };
+  onCollapse = (collapsed) => {
+    console.log(collapsed);
+    this.setState({
+      collapsed,
+    });
+  };
+
+  render() {
+    const { collapsed } = this.state;
+    return (
+      <Router>
+        <Layout
+          style={{
+            minHeight: '100vh',
+          }}
+        >
+          <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
+            <div className='logo' />
+            <Menu
+              theme='dark'
+              defaultSelectedKeys={['1']}
+              mode='inline'
+              items={items}
+            />
+          </Sider>
+          <Layout className='site-layout'>
+            <Header
+              className='site-layout-background'
+              style={{
+                padding: 0,
+              }}
+            />
+            <Content
+              style={{
+                margin: '0 16px',
+              }}
+            >
+              <Breadcrumb
+                style={{
+                  margin: '16px 0',
+                }}
+              >
+                <Breadcrumb.Item>Sign Up</Breadcrumb.Item>
+              </Breadcrumb>
+              <div
+                className='site-layout-background'
+                style={{
+                  padding: 24,
+                  minHeight: 360,
+                }}
+              >
+                <Routes>
+                  <Route path='/register' element={<RegistrationForm />} />
+                </Routes>
+              </div>
+            </Content>
+            <Footer
+              style={{
+                textAlign: 'center',
+              }}
+            >
+              Ant Design ©2018 Created by Ant UED
+            </Footer>
+          </Layout>
+        </Layout>
+      </Router>
+    );
+  }
+}
+
+//export default () => <SiderDemo />;
