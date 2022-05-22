@@ -1,12 +1,14 @@
 import React from 'react';
-import Heading from './Heading';
-import Body from './Body';
+import Heading from './Header';
+import Content from './Contentt';
+import Footer from './Footer';
 
 function App() {
   return (
     <div>
       <Heading />
-      <Body />
+      <Content />
+      <Footer />
     </div>
   );
 }
