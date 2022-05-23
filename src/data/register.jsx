@@ -1,26 +1,21 @@
 import React from 'react';
 import RegistrationForm from './../form/registrationform';
 
-function status(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
-  } else {
-    return new Promise((resolve, reject) => {
-      return reject(response);
-    });
-  }
-}
+// function status(response) {
+//   if (response.status >= 200 && response.status < 300) {
+//     return response;
+//   } else {
+//     return new Promise((resolve, reject) => {
+//       return reject(response);
+//     });
+//   }
+// }
 
-function json(response) {
-  return response.json();
-}
+// function json(response) {
+//   return response.json();
+// }
 
 function Register() {
-  return (
-    <div>
-      <h1>Register</h1>
-      <RegistrationForm />
-    </div>
-  );
+  return <RegistrationForm />;
 }
 export default Register;

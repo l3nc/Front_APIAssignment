@@ -16,11 +16,6 @@ import LoginForm from './../form/loginform';
 // }
 
 function Login() {
-  return (
-    <div>
-      <h1>Login</h1>
-      <LoginForm />
-    </div>
-  );
+  return <LoginForm />;
 }
 export default Login;

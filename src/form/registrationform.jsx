@@ -1,9 +1,7 @@
-import React, { Component, useState } from 'react';
-import { Form, Input, Button, message } from 'antd';
-import { LoadingOutlined } from '@ant-design/icons';
+import React, { useState } from 'react';
+import { Form, Input, Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { toHaveErrorMessage } from '@testing-library/jest-dom/dist/matchers';
 
 const emailRules = [
   { type: 'email', message: 'The input is not valid E-mail!' },

@@ -2,9 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Layout, Menu, Breadcrumb, Button } from 'antd';
 import './../src/App.less';
-import RegistrationForm from './../src/data/register';
+import Register from './../src/data/register';
 import About from './../src/data/about';
-import LoginForm from './../src/data/login';
+import Login from './../src/data/login';
+import DogAdopt from './../src/data/dogadopt';
 
 import {
   FileAddOutlined,
@@ -48,7 +49,13 @@ const items = [
       <NotificationOutlined />
     </Link>
   ),
-  getItem('Dog Adoption', '4', <TeamOutlined />),
+  getItem(
+    'Dog Adoption',
+    '4',
+    <Link to='/dogadopt'>
+      <TeamOutlined />
+    </Link>
+  ),
   getItem('Home', '5', <HomeOutlined />),
 ];
 
@@ -106,9 +113,10 @@ export default class SiderDemo extends React.Component {
                 }}
               >
                 <Routes>
-                  <Route path='/register' element={<RegistrationForm />} />
-                  <Route path='/login' element={<LoginForm />} />
+                  <Route path='/register' element={<Register />} />
+                  <Route path='/login' element={<Login />} />
                   <Route path='/about' element={<About />} />
+                  <Route path='/dogadopt' element={<DogAdopt />} />
                 </Routes>
               </div>
             </Content>

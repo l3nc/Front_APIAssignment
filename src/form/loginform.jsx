@@ -32,7 +32,9 @@ function LoginForm() {
   function handlePassword(e) {
     setPassword(e.target.value);
   }
-
+  function handleClick() {
+    navigate(1);
+  }
   const onSubmit = (e) => {
     e.preventDefault();
   };
@@ -46,7 +48,6 @@ function LoginForm() {
 
         .then((res) => {
           alert('Login Success');
-          navigate('/');
         })
         .catch((e) => {
           if (e.response) {
@@ -88,7 +89,7 @@ function LoginForm() {
           <Button type='primary' htmlType='submit' onClick={login}>
             Login
           </Button>
-          <Button type='secondary' htmlType='submit'>
+          <Button type='secondary' htmlType='submit' onClick={handleClick}>
             Forgot Password
           </Button>
         </Space>
