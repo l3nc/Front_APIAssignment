@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Layout, Menu, Breadcrumb, Button } from 'antd';
-import Frame from './components/frame';
+import './../src/App.less';
 import RegistrationForm from './../src/data/register';
 import About from './../src/data/about';
 import LoginForm from './../src/data/login';
@@ -12,9 +12,8 @@ import {
   NotificationOutlined,
   TeamOutlined,
   HomeOutlined,
-  ArrowLeftOutlined,
 } from '@ant-design/icons';
-import Login from './../src/data/login';
+
 const { Header, Content, Footer, Sider } = Layout;
 
 function getItem(label, key, icon, children) {

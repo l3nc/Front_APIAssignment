@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, Space } from 'antd';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,7 +17,7 @@ const formItemLayout = {
   wrapperCol: { xs: { span: 24 }, sm: { span: 12 } },
 };
 const tailFormItemLayout = {
-  wrapperCol: { xs: { span: 24, offset: 0 }, sm: { span: 16, offset: 6 } },
+  wrapperCol: { xs: { span: 24, offset: 0 }, sm: { span: 16, offset: 10 } },
 };
 
 function LoginForm() {
@@ -84,9 +84,14 @@ function LoginForm() {
       </Form.Item>
 
       <Form.Item {...tailFormItemLayout}>
-        <Button type='primary' htmlType='submit' onClick={login}>
-          Login
-        </Button>
+        <Space>
+          <Button type='primary' htmlType='submit' onClick={login}>
+            Login
+          </Button>
+          <Button type='secondary' htmlType='submit'>
+            Forgot Password
+          </Button>
+        </Space>
       </Form.Item>
     </Form>
   );
