@@ -98,7 +98,7 @@ function RegistrationForm() {
         label='E-mail'
         rules={emailRules}
         onChange={handleOnChangeEmail}
-        value={setEmail}
+        value={email}
       >
         <Input />
       </Form.Item>
@@ -108,7 +108,7 @@ function RegistrationForm() {
         label='Password'
         rules={passwordRules}
         onChange={handleOnChangePassword}
-        value={setPassword}
+        value={password}
         hasFeedback
       >
         <Input.Password />
@@ -119,7 +119,7 @@ function RegistrationForm() {
         label='Confirm Password'
         rules={confirmRules}
         onChange={handleOnChangePasswordConfirm}
-        value={setPasswordConfirm}
+        value={passwordConfirm}
         hasFeedback
       >
         <Input.Password />
@@ -130,7 +130,7 @@ function RegistrationForm() {
         label='Username'
         rules={usernameRules}
         onChange={handleOnChangeName}
-        value={setName}
+        value={name}
       >
         <Input />
       </Form.Item>

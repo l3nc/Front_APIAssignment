@@ -33,7 +33,7 @@ function LoginForm() {
     setPassword(e.target.value);
   }
   function handleClick() {
-    navigate(1);
+    navigate(-1);
   }
   const onSubmit = (e) => {
     e.preventDefault();
