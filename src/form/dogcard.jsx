@@ -6,9 +6,9 @@ import axios from 'axios';
 
 const { Meta } = Card;
 
-function DogCard() {
-  const [dogs, setDogs] = useState(null);
-  const [loading, setLoading] = useState(true);
+// function DogCard() {
+//   const [dogs, setDogs] = useState(null);
+//   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios.get('127.0.0.1:3001/api/v1/dogs').then();
