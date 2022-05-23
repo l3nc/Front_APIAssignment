@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Input, Button } from 'antd';
 import axios from 'axios';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const emailRules = [
   { type: 'email', message: 'The input is not valid E-mail!' },
@@ -21,7 +21,7 @@ const tailFormItemLayout = {
 };
 
 function LoginForm() {
-  const navigate = Navigate;
+  let navigate = useNavigate;
   //console.log("Success", values)
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -32,13 +32,12 @@ function LoginForm() {
   function handlePassword(e) {
     setPassword(e.target.value);
   }
+
   const onSubmit = (e) => {
     e.preventDefault();
   };
   const login = (e) => {
     if (email !== '' && password !== '') {
-      console.log(email);
-      console.log(password);
       axios
         .post('http://127.0.0.1:3001/api/v1/cws/login', {
           email: email,
@@ -47,21 +46,13 @@ function LoginForm() {
 
         .then((res) => {
           alert('Login Success');
-          navigate('/about');
+          navigate('/');
         })
         .catch((e) => {
-          if (e.response.error) {
-            alert('email or password incorrect!');
+          if (e.response) {
+            alert(e.response.data.message);
           }
         });
-    } else if (email === '') {
-      console.log(email);
-      console.log(password);
-      alert('Please input email!');
-    } else {
-      console.log(email);
-      console.log(password);
-      alert('Please input password!');
     }
   };
   return (

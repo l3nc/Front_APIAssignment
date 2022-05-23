@@ -1,20 +1,9 @@
-import React, { Component } from 'react';
-import { Form, Input, Button } from 'antd';
+import React, { Component, useState } from 'react';
+import { Form, Input, Button, message } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
-
-// function onFinish(values) {
-//   //console.log("Success", values)
-
-//   const { confirm, ...data } = values;
-//   http
-//     .post('/signup', data)
-//     .then((response) => {
-//       console.log(response.data);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// }
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { toHaveErrorMessage } from '@testing-library/jest-dom/dist/matchers';
 
 const emailRules = [
   { type: 'email', message: 'The input is not valid E-mail!' },
@@ -50,14 +39,69 @@ const tailFormItemLayout = {
 };
 
 function RegistrationForm() {
+  let navigate = useNavigate;
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [name, setName] = useState('');
+
+  const handleOnChangeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  const handleOnChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
+  const handleOnChangePasswordConfirm = (e) => {
+    setPasswordConfirm(e.target.value);
+  };
+  const handleOnChangeName = (e) => {
+    setName(e.target.value);
+  };
+  const onSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  const register = (e) => {
+    if (
+      email !== '' &&
+      password !== '' &&
+      passwordConfirm !== '' &&
+      name !== ''
+    ) {
+      axios
+        .post('http://127.0.0.1:3001/api/v1/cws/signup', {
+          email: email,
+          password: password,
+          passwordConfirm: password,
+          name: name,
+        })
+
+        .then((res) => {
+          alert('register Success');
+          navigate('/');
+        })
+        .catch((e) => {
+          if (e.response) {
+            alert(e.response.data.message);
+          }
+        });
+    }
+  };
   return (
     <Form
       name='register'
       {...formItemLayout}
       scrollToFirstError
-      onFinish={'onFinish'}
+      onSubmit={onSubmit}
     >
-      <Form.Item name='email' label='E-mail' rules={emailRules}>
+      <Form.Item
+        name='email'
+        label='E-mail'
+        rules={emailRules}
+        onChange={handleOnChangeEmail}
+        value={setEmail}
+      >
         <Input />
       </Form.Item>
 
@@ -65,6 +109,8 @@ function RegistrationForm() {
         name='password'
         label='Password'
         rules={passwordRules}
+        onChange={handleOnChangePassword}
+        value={setPassword}
         hasFeedback
       >
         <Input.Password />
@@ -74,17 +120,25 @@ function RegistrationForm() {
         name='confirm'
         label='Confirm Password'
         rules={confirmRules}
+        onChange={handleOnChangePasswordConfirm}
+        value={setPasswordConfirm}
         hasFeedback
       >
         <Input.Password />
       </Form.Item>
 
-      <Form.Item name='username' label='Username' rules={usernameRules}>
+      <Form.Item
+        name='username'
+        label='Username'
+        rules={usernameRules}
+        onChange={handleOnChangeName}
+        value={setName}
+      >
         <Input />
       </Form.Item>
 
       <Form.Item {...tailFormItemLayout}>
-        <Button type='primary' htmlType='submit'>
+        <Button type='primary' htmlType='submit' onClick={register}>
           Register
         </Button>
       </Form.Item>
